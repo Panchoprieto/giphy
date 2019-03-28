@@ -3,13 +3,18 @@
 //****************** SERIOUSLY TEST USING console.log()!!! ******************
 /* global $ */
 
-$('button').click(function(){
+$("#search-button").click(function(){
+    var searchTerm = $("#search-term").val();
+    console.log(searchTerm);
+     var request_url = 'https://api.giphy.com/v1/gifs/search?q=' + searchTerm + '&rating=pg&api_key=dc6zaTOxFJmzC';
  $.ajax({
-        url: "https://api.giphy.com/v1/gifs/search?q=puppy&rating=pg&api_key=dc6zaTOxFJmzC",
+        url: 'https://api.giphy.com/v1/gifs/search?q=' + searchTerm + '&rating=pg&api_key=dc6zaTOxFJmzC',
         method: "GET",
         success: function(response) {
             console.log(response);
             $('.text-center').append(response.url);
+            var url = "https://api.giphy.com/v1/gifs/search?q=" + searchTerm + "&rating=pg&api_key=dc6zaTOxFJmzC"
+            $('body').append('<img src=' + url + '>');
         },
     });
 });
